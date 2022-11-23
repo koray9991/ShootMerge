@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - 1
+  - 2
+  - 4
+  - Grid
+  - Enemy
+  - Bullet
+  - GunLevel1
+  - 8
+  - 16
+  - 32
+  - Guns
+  - GunLevel2
+  - EmptySlot
+  - GunLevel3
+  - GunLevel4
+  - GunLevel8
+  - 64
+  - 128
+  - 256
+  - 512
+  - 1024
+  - 2048
+  - GunLevel5
+  - GunLevel6
+  - GunLevel7
+  - GunLevel9
+  - GunLevel10
+  - GunLevel11
+  - GunLevel12
+  - CoinEnemy
+  - DollarEnemy
+  - Canvas
+  - Null
+  - Money
+  - Slot3
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0

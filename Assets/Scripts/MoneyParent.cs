@@ -19,9 +19,9 @@ public class MoneyParent : MonoBehaviour
             healths = healths / 2;
             for (int i = 0; i < transform.childCount; i++)
             {
-                transform.GetChild(i).GetChild(0).GetComponent<Enemy>().maxHealth = healths;
-                transform.GetChild(i).GetChild(0).GetComponent<Enemy>().health = healths;
-                transform.GetChild(i).GetChild(0).GetComponent<Enemy>().healthText.text = healths.ToString();
+                transform.GetChild(i).GetChild(0).GetComponent<Enemy>().maxHealth = healths*2;
+                transform.GetChild(i).GetChild(0).GetComponent<Enemy>().health = healths*2;
+                transform.GetChild(i).GetChild(0).GetComponent<Enemy>().healthText.text = (healths*2).ToString();
             }
         }
        

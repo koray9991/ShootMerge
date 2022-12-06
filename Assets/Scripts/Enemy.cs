@@ -107,9 +107,13 @@ public class Enemy : MonoBehaviour
         if (other.tag == "Bullet")
         {
             MainBool = true;
-            Instantiate(moneyObject, other.transform.position, Quaternion.identity);
+            //if(moneyObject != null)
+            //{
+            //    Instantiate(moneyObject, other.transform.position, Quaternion.identity);
+            //}
+           
             health -= other.GetComponent<Bullet>().damage;
-            GameManager.instance.GetComponent<AudioSource>().PlayOneShot(GameManager.instance.voices[0]);
+            //GameManager.instance.GetComponent<AudioSource>().PlayOneShot(GameManager.instance.voices[0]);
             healthText.text = health.ToString();
             GameManager.instance.score += other.GetComponent<Bullet>().damage;
             GameManager.instance.scoreText.text = GameManager.instance.score.ToString();
@@ -131,8 +135,8 @@ public class Enemy : MonoBehaviour
         }
         if (other.tag == "Finish")
         {
-            Time.timeScale = 0;
-            GameManager.instance.gameOver = true;
+          //  Time.timeScale = 0;
+        //    GameManager.instance.gameOver = true;
         }
     }
     void Destroyed()

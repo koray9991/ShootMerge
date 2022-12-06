@@ -126,6 +126,8 @@ MonoBehaviour:
   currentY: 200
   currentZ: 0
   scaleIndex: 30
+  dontSmaller: 0
+  moneyObject: {fileID: 5459525143257492547, guid: dc4c45504751df647bee37c9d63651ce, type: 3}
 --- !u!65 &5104925793484066083
 BoxCollider:
   m_ObjectHideFlags: 0

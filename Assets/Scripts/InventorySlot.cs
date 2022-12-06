@@ -12,49 +12,49 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         {
             var merged = Instantiate(GameManager.instance.objects[1], transform.position, Quaternion.identity);
             merged.transform.parent = transform;
-            merged.transform.localScale = new Vector3(2, 2, 2);
+            merged.transform.localScale = new Vector3(1.3f, 1.8f, 1f);
         }
         if (number == 3)
         {
             var merged = Instantiate(GameManager.instance.objects[2], transform.position, Quaternion.identity);
             merged.transform.parent = transform;
-            merged.transform.localScale = new Vector3(2, 2, 2);
+            merged.transform.localScale = new Vector3(1.3f, 1.8f, 1f);
         }
         if (number == 4)
         {
             var merged = Instantiate(GameManager.instance.objects[3], transform.position, Quaternion.identity);
             merged.transform.parent = transform;
-            merged.transform.localScale = new Vector3(2, 2, 2);
+            merged.transform.localScale = new Vector3(1.3f, 1.8f, 1f);
         }
         if (number == 5)
         {
             var merged = Instantiate(GameManager.instance.objects[4], transform.position, Quaternion.identity);
             merged.transform.parent = transform;
-            merged.transform.localScale = new Vector3(2, 2, 2);
+            merged.transform.localScale = new Vector3(1.3f, 1.8f, 1f);
         }
         if (number == 6)
         {
             var merged = Instantiate(GameManager.instance.objects[5], transform.position, Quaternion.identity);
             merged.transform.parent = transform;
-            merged.transform.localScale = new Vector3(2, 2, 2);
+            merged.transform.localScale = new Vector3(1.3f, 1.8f, 1f);
         }
         if (number == 7)
         {
             var merged = Instantiate(GameManager.instance.objects[6], transform.position, Quaternion.identity);
             merged.transform.parent = transform;
-            merged.transform.localScale = new Vector3(2, 2, 2);
+            merged.transform.localScale = new Vector3(1.3f, 1.8f, 1f);
         }
         if (number == 8)
         {
             var merged = Instantiate(GameManager.instance.objects[7], transform.position, Quaternion.identity);
             merged.transform.parent = transform;
-            merged.transform.localScale = new Vector3(2, 2, 2);
+            merged.transform.localScale = new Vector3(1.3f, 1.8f, 1f);
         }
         if (number == 9)
         {
             var merged = Instantiate(GameManager.instance.objects[8], transform.position, Quaternion.identity);
             merged.transform.parent = transform;
-            merged.transform.localScale = new Vector3(2, 2, 2);
+            merged.transform.localScale = new Vector3(1.3f, 1.8f, 1f);
         }
         transform.GetChild(0).gameObject.SetActive(false);
         transform.GetChild(1).gameObject.SetActive(false);

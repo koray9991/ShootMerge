@@ -14683,6 +14683,7 @@ MonoBehaviour:
   currentZ: 2
   scaleIndex: 0.3
   dontSmaller: 0
+  moneyObject: {fileID: 2347033582904473705, guid: 70587c6bc3736a540a6096969405867a, type: 3}
 --- !u!65 &4953723168829137302
 BoxCollider:
   m_ObjectHideFlags: 0

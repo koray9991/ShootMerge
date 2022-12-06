@@ -69,7 +69,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d13c6d1fcd317134698a75ade8174241, type: 2}
+  - {fileID: 2100000, guid: f4ede4f43f41b8e4e86af1454c34be5a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -183,8 +183,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0.936898, b: 0, a: 1}
-      key1: {r: 1, g: 0.9372549, b: 0, a: 0}
+      key0: {r: 0.25114298, g: 1, b: 0, a: 1}
+      key1: {r: 0.2509804, g: 1, b: 0, a: 0}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -226,10 +226,10 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5006413282899374326}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: fdb0414b3b6fa0b4e8fef2e6e75a4d4d, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d70c30852b693464d8f1a43183467137, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

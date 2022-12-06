@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public float gameTimer;
     bool bossBool;
-    public GameObject boss;
+    public GameObject[] boss;
     public Transform bossSpawnPoint;
     public GameObject bossText;
     public bool winBool;
@@ -41,6 +41,10 @@ public class GameManager : MonoBehaviour
     public GameObject bossEffect;
     public Image timeBar;
     public AudioClip[] voices;
+    public TextMeshProUGUI earnedText,earnedTextWin;
+    public List<GameObject> bgGreenList;
+    public GameObject failExplosion;
+    int level;
     private void Awake()
     {
         if (instance == null) { instance = this; }
@@ -56,14 +60,18 @@ public class GameManager : MonoBehaviour
         enemyTimer = 0;
         enemyRandomInt = Random.Range(0, enemy.Length);
         var newEnemy = Instantiate(enemy[enemyRandomInt], enemySpawnPoint.position , Quaternion.identity);
-        
+        level = PlayerPrefs.GetInt("level");
+        if (level > 2)
+        {
+            level = 0;
+        }
     }
   
     private void Update()
     {
         gameTimer += Time.deltaTime;
-        timeBar.fillAmount = gameTimer / 100;
-        if (gameTimer > 100 && !bossBool)
+        timeBar.fillAmount = gameTimer / 10;
+        if (gameTimer > 10 && !bossBool)
         {
             timeBar.gameObject.SetActive(false);
             bossText.SetActive(true);
@@ -71,13 +79,19 @@ public class GameManager : MonoBehaviour
             maxEnemyTimer = 9999;
             if (!bossBool)
             {
-                Instantiate(boss, bossSpawnPoint.position, Quaternion.identity);
+                Instantiate(boss[level], bossSpawnPoint.position, Quaternion.identity);
+                level++;
+                if (level == 3)
+                {
+                    level = 0;
+                }
+                PlayerPrefs.SetInt("level", level);
             }
             bossBool = true;
             
 
         }
-        if (gameTimer > 103)
+        if (gameTimer > 13)
         {
             bossText.SetActive(false);
             bossEffect.SetActive(false);
@@ -86,6 +100,7 @@ public class GameManager : MonoBehaviour
         if (winBool && Time.timeScale!=0)
         {
             Time.timeScale = 0;
+            earnedTextWin.text = score.ToString();
             winPanel.SetActive(true);
             confetti.SetActive(true);
 
@@ -106,9 +121,11 @@ public class GameManager : MonoBehaviour
         }
         if (gameOver)
         {
-            gameOverTimer += Time.fixedDeltaTime/2;
+            gameOverTimer += Time.fixedDeltaTime;
             if (gameOverTimer > 1)
             {
+                earnedText.text = score.ToString();
+                Time.timeScale = 0;
                 gameOverPanel.SetActive(true);
             }
         }
@@ -137,7 +154,7 @@ public class GameManager : MonoBehaviour
                 if(grid[i].transform.childCount == 0)
                 {
                     spawnObject.transform.parent = grid[i].transform;
-                    spawnObject.transform.localScale = new Vector3(2, 2, 2);
+                    spawnObject.transform.localScale = new Vector3(1.3f, 1.8f, 1);
                     break;
                 }
             }
@@ -163,7 +180,7 @@ public class GameManager : MonoBehaviour
         {
             if (SceneManager.GetActiveScene().buildIndex != 2)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
             else
             {

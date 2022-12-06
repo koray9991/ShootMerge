@@ -12,16 +12,65 @@ public class DraggableItem : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDr
     public LayerMask layerMask;
     public Camera cam;
     public bool hold;
+
+    
     private void Start()
     {
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
-   
+    private void FixedUpdate()
+    {
+        if (hold)
+        {
+            for (int i = 0; i < GameManager.instance.bgGreenList.Count; i++)
+            {
+                if (GameManager.instance.grid[i].transform.childCount != 0)
+                {
+                    if (GameManager.instance.holdedObjectNumber == 1 && GameManager.instance.grid[i].transform.GetChild(0).tag == "1")
+                    {
+                        GameManager.instance.bgGreenList[i].gameObject.SetActive(true);
+                    }
+                    if (GameManager.instance.holdedObjectNumber == 2 && GameManager.instance.grid[i].transform.GetChild(0).tag == "2")
+                    {
+                        GameManager.instance.bgGreenList[i].gameObject.SetActive(true);
+                    }
+                    if (GameManager.instance.holdedObjectNumber == 4 && GameManager.instance.grid[i].transform.GetChild(0).tag == "4")
+                    {
+                        GameManager.instance.bgGreenList[i].gameObject.SetActive(true);
+                    }
+                    if (GameManager.instance.holdedObjectNumber == 8 && GameManager.instance.grid[i].transform.GetChild(0).tag == "8")
+                    {
+                        GameManager.instance.bgGreenList[i].gameObject.SetActive(true);
+                    }
+                    if (GameManager.instance.holdedObjectNumber == 16 && GameManager.instance.grid[i].transform.GetChild(0).tag == "16")
+                    {
+                        GameManager.instance.bgGreenList[i].gameObject.SetActive(true);
+                    }
+                    if (GameManager.instance.holdedObjectNumber == 32 && GameManager.instance.grid[i].transform.GetChild(0).tag == "32")
+                    {
+                        GameManager.instance.bgGreenList[i].gameObject.SetActive(true);
+                    }
+                    if (GameManager.instance.holdedObjectNumber == 64 && GameManager.instance.grid[i].transform.GetChild(0).tag == "64")
+                    {
+                        GameManager.instance.bgGreenList[i].gameObject.SetActive(true);
+                    }
+                    if (GameManager.instance.holdedObjectNumber == 128 && GameManager.instance.grid[i].transform.GetChild(0).tag == "128")
+                    {
+                        GameManager.instance.bgGreenList[i].gameObject.SetActive(true);
+                    }
+
+                }
+               
+            }
+        }
+       
+    }
     public void OnBeginDrag(PointerEventData eventData)
     {
         GameManager.instance.holdedObjectParent = transform.parent.gameObject;
         var nullObject = Instantiate(GameManager.instance.nullObjectPrefab, transform.position, Quaternion.identity);
         nullObject.transform.parent = GameManager.instance.holdedObjectParent.transform;
+        
         parentAfterDrag = transform.parent;
         transform.SetParent(transform.root);
         transform.SetAsLastSibling();
@@ -83,11 +132,14 @@ public class DraggableItem : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDr
         }
 
         hold = true;
+       
     }
 
     public void OnDrag(PointerEventData eventData)
     {
         transform.position = Input.mousePosition;
+        
+      
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -122,7 +174,7 @@ public class DraggableItem : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDr
                 newGun.transform.localPosition = new Vector3(0, 0, 0);
                 newGun.transform.localRotation = Quaternion.Euler(0, 180, 0);
                 hit.transform.GetComponent<BoxCollider>().enabled = false;
-                
+                GameManager.instance.GetComponent<AudioSource>().PlayOneShot(GameManager.instance.voices[2]);
                 Destroy(gameObject);
             }
             if (hit.transform.tag == "EmptySlot" && GameManager.instance.holdedObjectNumber == 2)
@@ -133,6 +185,7 @@ public class DraggableItem : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDr
                 newGun.transform.localPosition = new Vector3(0, 0, 0);
                 newGun.transform.localRotation = Quaternion.Euler(0, 180, 0);
                 hit.transform.GetComponent<BoxCollider>().enabled = false;
+                GameManager.instance.GetComponent<AudioSource>().PlayOneShot(GameManager.instance.voices[2]);
 
                 Destroy(gameObject);
             }
@@ -143,6 +196,7 @@ public class DraggableItem : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDr
                 newGun.transform.localPosition = new Vector3(0, 0, 0);
                 newGun.transform.localRotation = Quaternion.Euler(0, 180, 0);
                 hit.transform.GetComponent<BoxCollider>().enabled = false;
+                GameManager.instance.GetComponent<AudioSource>().PlayOneShot(GameManager.instance.voices[2]);
 
                 Destroy(gameObject);
             }
@@ -153,6 +207,7 @@ public class DraggableItem : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDr
                 newGun.transform.localPosition = new Vector3(0, 0, 0);
                 newGun.transform.localRotation = Quaternion.Euler(0, 180, 0);
                 hit.transform.GetComponent<BoxCollider>().enabled = false;
+                GameManager.instance.GetComponent<AudioSource>().PlayOneShot(GameManager.instance.voices[2]);
 
                 Destroy(gameObject);
             }
@@ -163,6 +218,7 @@ public class DraggableItem : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDr
                 newGun.transform.localPosition = new Vector3(0, 0, 0);
                 newGun.transform.localRotation = Quaternion.Euler(0, 180, 0);
                 hit.transform.GetComponent<BoxCollider>().enabled = false;
+                GameManager.instance.GetComponent<AudioSource>().PlayOneShot(GameManager.instance.voices[2]);
 
                 Destroy(gameObject);
             }
@@ -173,6 +229,7 @@ public class DraggableItem : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDr
                 newGun.transform.localPosition = new Vector3(0, 0, 0);
                 newGun.transform.localRotation = Quaternion.Euler(0, 180, 0);
                 hit.transform.GetComponent<BoxCollider>().enabled = false;
+                GameManager.instance.GetComponent<AudioSource>().PlayOneShot(GameManager.instance.voices[2]);
 
                 Destroy(gameObject);
             }
@@ -183,6 +240,7 @@ public class DraggableItem : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDr
                 newGun.transform.localPosition = new Vector3(0, 0, 0);
                 newGun.transform.localRotation = Quaternion.Euler(0, 180, 0);
                 hit.transform.GetComponent<BoxCollider>().enabled = false;
+                GameManager.instance.GetComponent<AudioSource>().PlayOneShot(GameManager.instance.voices[2]);
 
                 Destroy(gameObject);
             }
@@ -193,6 +251,7 @@ public class DraggableItem : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDr
                 newGun.transform.localPosition = new Vector3(0, 0, 0);
                 newGun.transform.localRotation = Quaternion.Euler(0, 180, 0);
                 hit.transform.GetComponent<BoxCollider>().enabled = false;
+                GameManager.instance.GetComponent<AudioSource>().PlayOneShot(GameManager.instance.voices[2]);
 
                 Destroy(gameObject);
             }
@@ -203,6 +262,7 @@ public class DraggableItem : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDr
                 newGun.transform.localPosition = new Vector3(0, 0, 0);
                 newGun.transform.localRotation = Quaternion.Euler(0, 180, 0);
                 hit.transform.GetComponent<BoxCollider>().enabled = false;
+                GameManager.instance.GetComponent<AudioSource>().PlayOneShot(GameManager.instance.voices[2]);
 
                 Destroy(gameObject);
             }
@@ -217,7 +277,7 @@ public class DraggableItem : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDr
                 newGun.transform.rotation = hit.transform.rotation;
                 Destroy(hit.transform.gameObject);
                 Destroy(gameObject);
-
+                GameManager.instance.GetComponent<AudioSource>().PlayOneShot(GameManager.instance.voices[1]);
             }
             if (hit.transform.tag == "GunLevel2" && GameManager.instance.holdedObjectNumber == 2)
             {
@@ -227,7 +287,7 @@ public class DraggableItem : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDr
                 newGun.transform.rotation = hit.transform.rotation;
                 Destroy(hit.transform.gameObject);
                 Destroy(gameObject);
-
+                GameManager.instance.GetComponent<AudioSource>().PlayOneShot(GameManager.instance.voices[1]);
             }
             if (hit.transform.tag == "GunLevel3" && GameManager.instance.holdedObjectNumber == 4)
             {
@@ -237,7 +297,7 @@ public class DraggableItem : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDr
                 newGun.transform.rotation = hit.transform.rotation;
                 Destroy(hit.transform.gameObject);
                 Destroy(gameObject);
-
+                GameManager.instance.GetComponent<AudioSource>().PlayOneShot(GameManager.instance.voices[1]);
             }
             if (hit.transform.tag == "GunLevel4" && GameManager.instance.holdedObjectNumber == 8)
             {
@@ -247,7 +307,7 @@ public class DraggableItem : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDr
                 newGun.transform.rotation = hit.transform.rotation;
                 Destroy(hit.transform.gameObject);
                 Destroy(gameObject);
-
+                GameManager.instance.GetComponent<AudioSource>().PlayOneShot(GameManager.instance.voices[1]);
             }
             if (hit.transform.tag == "GunLevel5" && GameManager.instance.holdedObjectNumber == 16)
             {
@@ -257,7 +317,7 @@ public class DraggableItem : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDr
                 newGun.transform.rotation = hit.transform.rotation;
                 Destroy(hit.transform.gameObject);
                 Destroy(gameObject);
-
+                GameManager.instance.GetComponent<AudioSource>().PlayOneShot(GameManager.instance.voices[1]);
             }
             if (hit.transform.tag == "GunLevel6" && GameManager.instance.holdedObjectNumber == 32)
             {
@@ -267,7 +327,7 @@ public class DraggableItem : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDr
                 newGun.transform.rotation = hit.transform.rotation;
                 Destroy(hit.transform.gameObject);
                 Destroy(gameObject);
-
+                GameManager.instance.GetComponent<AudioSource>().PlayOneShot(GameManager.instance.voices[1]);
             }
             if (hit.transform.tag == "GunLevel7" && GameManager.instance.holdedObjectNumber == 64)
             {
@@ -277,7 +337,7 @@ public class DraggableItem : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDr
                 newGun.transform.rotation = hit.transform.rotation;
                 Destroy(hit.transform.gameObject);
                 Destroy(gameObject);
-
+                GameManager.instance.GetComponent<AudioSource>().PlayOneShot(GameManager.instance.voices[1]);
             }
             if (hit.transform.tag == "GunLevel8" && GameManager.instance.holdedObjectNumber == 128)
             {
@@ -287,7 +347,7 @@ public class DraggableItem : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDr
                 newGun.transform.rotation = hit.transform.rotation;
                 Destroy(hit.transform.gameObject);
                 Destroy(gameObject);
-
+                GameManager.instance.GetComponent<AudioSource>().PlayOneShot(GameManager.instance.voices[1]);
             }
         }
         
@@ -298,8 +358,13 @@ public class DraggableItem : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDr
         GunParent.instance.aura3.SetActive(false);
         GunParent.instance.aura4.SetActive(false);
         GunParent.instance.aura5.SetActive(false);
-        
-       
+
+        for (int i = 0; i < GameManager.instance.bgGreenList.Count; i++)
+        {
+
+            GameManager.instance.bgGreenList[i].gameObject.SetActive(false);
+             
+        }
 
     }
     private void Update()

@@ -18,6 +18,7 @@ public class GunParent : MonoBehaviour
     
     float gunCheckerTimer;
     public bool canMove;
+    public bool fail1Time;
 
     private void Awake()
     {
@@ -31,6 +32,40 @@ public class GunParent : MonoBehaviour
     
     void Update()
     {
+        if (GameManager.instance.gameOver && !fail1Time)
+        { 
+            fail1Time = true;
+            if (slot1.transform.childCount != 0)
+            {
+                Instantiate(GameManager.instance.failExplosion, slot1.transform.position, Quaternion.identity);
+                gun1.SetActive(false);
+            }
+            if (slot2.transform.childCount != 0)
+            {
+                Instantiate(GameManager.instance.failExplosion, slot2.transform.position, Quaternion.identity);
+                gun2.SetActive(false);
+            }
+            if (slot3.transform.childCount != 0)
+            {
+                Instantiate(GameManager.instance.failExplosion, slot3.transform.position, Quaternion.identity);
+                gun3.SetActive(false);
+            }
+            if (slot4.transform.childCount != 0)
+            {
+                Instantiate(GameManager.instance.failExplosion, slot4.transform.position, Quaternion.identity);
+                gun4.SetActive(false);
+            }
+            if (slot5.transform.childCount != 0)
+            {
+                Instantiate(GameManager.instance.failExplosion, slot5.transform.position, Quaternion.identity);
+                gun5.SetActive(false);
+            }
+          
+           
+            
+            
+           
+        }
         gunCheckerTimer += Time.deltaTime;
         if (gunCheckerTimer > 0.5f)
         {
@@ -115,8 +150,8 @@ public class GunParent : MonoBehaviour
 
 
                     slot1.GetComponent<BoxCollider>().enabled = true;
-                
-                }
+                GameManager.instance.GetComponent<AudioSource>().PlayOneShot(GameManager.instance.voices[1]);
+            }
             }
             if (gun2 != null && gun3 != null)
             {
@@ -129,9 +164,9 @@ public class GunParent : MonoBehaviour
                     newGun.transform.parent = slot3.transform;
                     newGun.transform.localPosition = Vector3.zero;
                     newGun.transform.localRotation = Quaternion.Euler(0, 180, 0);
+                GameManager.instance.GetComponent<AudioSource>().PlayOneShot(GameManager.instance.voices[1]);
 
-
-                    slot2.GetComponent<BoxCollider>().enabled = true;
+                slot2.GetComponent<BoxCollider>().enabled = true;
                 return;
                 }
             }
@@ -147,8 +182,8 @@ public class GunParent : MonoBehaviour
                     newGun.transform.localPosition = Vector3.zero;
                     newGun.transform.localRotation = Quaternion.Euler(0, 180, 0);
 
-
-                    slot4.GetComponent<BoxCollider>().enabled = true;
+                GameManager.instance.GetComponent<AudioSource>().PlayOneShot(GameManager.instance.voices[1]);
+                slot4.GetComponent<BoxCollider>().enabled = true;
                 return;
             }
             }
@@ -158,8 +193,8 @@ public class GunParent : MonoBehaviour
                 {
                     Destroy(slot4.transform.GetChild(0).gameObject);
                     Destroy(slot5.transform.GetChild(0).gameObject);
-
-                    var newGun = Instantiate(GunObjects[gun4.GetComponent<Gun>().gunLevel], transform.position, Quaternion.identity);
+                GameManager.instance.GetComponent<AudioSource>().PlayOneShot(GameManager.instance.voices[1]);
+                var newGun = Instantiate(GunObjects[gun4.GetComponent<Gun>().gunLevel], transform.position, Quaternion.identity);
                     newGun.transform.parent = slot4.transform;
                     newGun.transform.localPosition = Vector3.zero;
                     newGun.transform.localRotation = Quaternion.Euler(0, 180, 0);
